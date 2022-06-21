@@ -9,18 +9,25 @@ namespace SampleMVCApp.Controllers
 {
     public class EmployeeController : Controller
     {
+        [HttpGet]
         // GET: Employee
         public ActionResult GetAllEmployee()
         {
-            List<Employee> empList = new List<Employee>()
-        {
-            new Employee{  Id = 1, Name = "Suraj", Department = "IT", Salary = 100000.1 },
-            new Employee{  Id = 2, Name = "Aman", Department = "Finance", Salary = 300000.1 },
-            new Employee{  Id = 3, Name = "Raju", Department = "Hr", Salary = 220000.1 },
-            new Employee{  Id = 4, Name = "ihil", Department = "IT", Salary = 310000.1 },
-        };
-            ViewBag.EmpList = empList;
+          
             return View();
         }
+        [HttpPost]
+        public ActionResult GetAllEmployee(FormCollection fc)
+        {
+            ViewBag.EmpId = fc["EmpId"];
+            ViewBag.name = fc["EmpName"];
+            ViewBag.Gender = fc["Gender"];
+            ViewBag.department = fc["department"];
+            ViewBag.salary = fc["EmpSal"];
+            return View("EmpDetails");
+        }
+
+
+
     }
 }

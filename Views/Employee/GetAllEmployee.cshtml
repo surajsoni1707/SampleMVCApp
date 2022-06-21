@@ -1,28 +1,45 @@
 ﻿
 @{
-    ViewBag.Title = "GetAllEmployee";
+    ViewBag.Title = "Employee";
 }
 
-<h2>GetAllEmployee</h2>
-<table class="table table-bordered table-hover">
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Company</th>
-            <th>Price</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach(SampleMVCApp.Models.Employee emp in ViewBag.EmpList)
-            {
-        <tr>
-            <td>@emp.Id</td>
-            <td>@emp.Name</td>
-            <td>@emp.Department</td>
-            <td>@emp.Salary</td>
-        </tr>
-            }
+<h2>Employee</h2>
+@using (Html.BeginForm())
+{
+    <div class="container">
+    <table class="table table-bordered table-hover">
 
-</tbody>
-</table>
+
+        <tbody>
+            <tr>
+                <th>Employee Id:</th>
+                <th>@Html.TextBox("EmpId")</th>
+            </tr>
+            <tr>
+                <th>Employee Name:</th>
+                <th>@Html.TextBox("EmpName")</th>
+            </tr>
+            <tr>
+                <th>Select Gender</th>
+                <td>
+                    @Html.RadioButton("Gender", "Male") Male
+                    @Html.RadioButton("Gender", "Female") Female
+                </td>
+            </tr>
+            <tr>
+                <th>Employee Department:</th>
+                <th>@Html.TextBox("department")</th>
+            </tr>
+            <tr>
+                <th>Employee Salary:</th>
+                <th>@Html.TextBox("EmpSal")</th>
+            </tr>
+            <tr>
+                <th colspan="2" style="padding-left:450px"><input type="submit" value="Submit"  /></th>
+
+            </tr>
+
+        </tbody>
+    </table>
+        </div>
+}
